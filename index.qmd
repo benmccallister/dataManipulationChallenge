@@ -201,14 +201,15 @@ print(shipments_with_lateness[['shipID', 'plannedShipDate', 'actualShipDate', 'i
 - Can you give an example where comparing two dates as strings would yield unintuitive results, e.g. what happens if you try to compare "04-11-2025" and "05-20-2024" as strings vs as dates?
 
 **Question 3: Debug This Code**
-```python
+
 # This code has an error - can you spot it?
+```{python}
 shipments_with_lateness = (
     shipments_df
     .assign(
         is_late=lambda df: df['actualShipDate'] > df['plannedShipDate'],
         days_late=lambda df: (df['actualShipDate'] - df['plannedShipDate']).dt.days,
-        lateStatement="Darn Shipment is Late" if shipments_df['is_late'] else "Shipment is on Time"
+        lateStatement=['is_late'], "Darn Shipment is Late", "Shipment is on Time")
     )
 )
 ```
@@ -230,17 +231,18 @@ print(pd.to_datetime("04-11-2025") - pd.to_datetime("05-20-2024"))
 
 Question 3:
 # This code has an error - can you spot it?
-shipments_with_lateness = (
-    shipments_df
-    .assign(
-        is_late=lambda df: df['actualShipDate'] > df['plannedShipDate'],
-        days_late=lambda df: (df['actualShipDate'] - df['plannedShipDate']).dt.days,
-        lateStatement=lambda df: np.where(df['is_late'], "Darn Shipment is Late", "Shipment is on Time")
-    )
-)
-
-print(lateStatement)
-
+```{python}
+   import numpy as np
+   shipments_with_lateness = (
+       shipments_df
+       .assign(
+           is_late=lambda df: df['actualShipDate'] > df['plannedShipDate'],
+           days_late=lambda df: (df['actualShipDate'] - df['plannedShipDate']).dt.days,
+           lateStatement=lambda df: np.where(df['is_late'], "Darn Shipment is Late", "Shipment is on Time")
+       )
+   )
+print(shipments_with_lateness['lateStatement'].head())
+```
 
 ### 2. Subset: Querying Rows and Filtering Columns
 
@@ -285,7 +287,8 @@ print(late_shipments.head())
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> Question1:
+
 
 ### 3. Drop: Removing Unwanted Data
 
