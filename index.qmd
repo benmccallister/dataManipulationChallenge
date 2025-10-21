@@ -3,7 +3,6 @@ title: "Data Manipulation Challenge"
 subtitle: "A Mental Model for Method Chaining in Pandas"
 format:
   html: default
-  pdf: default
 execute:
   echo: true
   eval: true
@@ -218,7 +217,30 @@ What's wrong with the `lateStatement` assignment and how would you fix it?
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> Question1:
+The dtype is datetime64[ns] which can be found by looking at the code which has .dt at the end or by running the following code: print(shipments_df['plannedShipDate'].dtype). It is important that they have the same data type for easy comparison. As evidenced by the days_late calculation, we can actually subtract the planned ship date from the actual ship date to find how late the shipment was. We would not be able to calculate the differnce of different data types.
+Question 2:
+# Compare as strings
+print("04-11-2025" - "05-20-2024")
+# Output: TypeError: unsupported operand type(s) for -: 'str' and 'str'
+
+# Compare as dates
+print(pd.to_datetime("04-11-2025") - pd.to_datetime("05-20-2024"))
+# Output: 355 days 00:00:00
+
+Question 3:
+# This code has an error - can you spot it?
+shipments_with_lateness = (
+    shipments_df
+    .assign(
+        is_late=lambda df: df['actualShipDate'] > df['plannedShipDate'],
+        days_late=lambda df: (df['actualShipDate'] - df['plannedShipDate']).dt.days,
+        lateStatement=lambda df: np.where(df['is_late'], "Darn Shipment is Late", "Shipment is on Time")
+    )
+)
+
+print(lateStatement)
+
 
 ### 2. Subset: Querying Rows and Filtering Columns
 
