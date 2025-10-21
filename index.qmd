@@ -287,7 +287,15 @@ print(late_shipments.head())
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Question1:
+> Question 1:
+Both methods filter rows where is_late is True. The only difference is how you write it: .query('is_late == True') is more readable and easier to write.
+
+Question 2:
+```{python}
+late_threshold = 5
+late_shipments = shipments_with_lateness.query(f'days_late >= {late_threshold}')
+print(late_shipments.head())
+```
 
 
 ### 3. Drop: Removing Unwanted Data
