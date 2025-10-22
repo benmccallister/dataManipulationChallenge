@@ -209,7 +209,7 @@ shipments_with_lateness = (
     .assign(
         is_late=lambda df: df['actualShipDate'] > df['plannedShipDate'],
         days_late=lambda df: (df['actualShipDate'] - df['plannedShipDate']).dt.days,
-        lateStatement=['is_late'], "Darn Shipment is Late", "Shipment is on Time")
+        lateStatement=lambda df: np.where(df['is_late'], "Darn Shipment is Late", "Shipment is on Time")
     )
 )
 ```
