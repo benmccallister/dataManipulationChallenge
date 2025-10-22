@@ -377,7 +377,14 @@ print(sorted_by_lateness[['shipID', 'partID', 'days_late', 'is_late']].head(10))
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> Question 1: 
+ascending=False sorts from highest to lowest. ascending=True sorts from lowest to highest. 
+To sort by multiple columns:
+```{python}
+shipments_with_lateness.sort_values(['is_late', 'days_late'], ascending=[False, False])
+```
+Question 2:
+Before running a sort function like the one above, the data is indexed from 0 to the end of the data set. After sorting, since that data is now in order, the numbers indicating the index positions are out of order, by reseting the index, the rows are renumbered according to their new positions rather than their original ones.
 
 ### 5. Aggregate: Summarizing Data
 
