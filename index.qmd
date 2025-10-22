@@ -334,7 +334,12 @@ print("Remaining columns:", clean_shipments.columns.tolist())
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> Question 1:
+Drop is used to remove specific unwanted columns. Filter is used to keep specific columns. You would choose to drop if you only want to drop a few columns. You would choose to filter if you only want to keep a few columns.
+
+Question 2:
+.dropna() without specifying a subset would drop any row that has a missing value in any column. By specifying a subset, only rows that have missing values in the specified columns will be removed. You may want to be more selective if there are certain columns whose values are less important. These columns may have many rows with missing values that would lead too many rows to be removed if .dropna() was used indiscriminately.
+
 
 ### 4. Sort: Arranging Data
 
