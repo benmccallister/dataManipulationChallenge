@@ -424,7 +424,8 @@ print(f"\nOn-time delivery rate: {on_time_rate:.1f}%")
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> Question 1:
+The boolean function assigns the number 1 to true and the number 0 to false, so by summing boolean values, you get the sum of the trues thus counting how many true values there are.
 
 ### 6. Merge: Combining Information
 
