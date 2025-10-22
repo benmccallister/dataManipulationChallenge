@@ -464,7 +464,16 @@ print(shipments_with_category['prodCategory'].value_counts())
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> Question 1:
+By using how='left', we are preserving the main dataset.
+To check if any shipments were lost during the merge:
+```{python}
+# Check if all shipments kept their original data
+original_shipments = set(clean_shipments['shipID'])
+merged_shipments = set(shipments_with_category['shipID'])
+print(f"All shipments preserved: {original_shipments == merged_shipments}")
+```
+Question 2: There would be duplicate shipments created in the merged dataframe. We would need to remove these duplicates.
 
 ### 7. Split-Apply-Combine: Group Analysis
 
