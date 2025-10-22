@@ -532,7 +532,7 @@ print("Service Level by Product Category:")
 print(service_by_category)
 ```
 Question 2:
-By grouping by both ShipID and prodCategory, we are able to analyze how many shipments are late rather than products. This allows us to study patterns in shipments rather than products as multiple product categories could be on a single shipment. By looking at the particular ShipIDs, we may be able to track down which particular shipments run late rather than which product types run late so that we could potentially work with the distributor.
+By grouping by both ShipID and prodCategory, we are able to analyze how many shipments are late rather than products. This allows us to study patterns in shipments rather than products as multiple product categories could be on a single shipment. 
 
 ## Answering A Business Question
 
@@ -576,7 +576,9 @@ print(f"Percentage with multiple categories: {multi_category_shipments['shipID']
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> 
+> By looking at the particular ShipIDs, we may be able to track down which particular shipments run late rather than which product types run late so that we could potentially work with the distributors to tighten the ship time. Additionally, by knowing the percentage of multi-category shipments, ZappTech could do one of the following:
+1) adjust customer expectations when their goods are part of a multi-category shipment
+2) try to reduce multi-category shipments and coordinate only single-cateogry shipments if this is feasible
 
 ## Student Analysis Section: Mastering Data Manipulation {#student-analysis-section}
 
