@@ -513,7 +513,26 @@ print(service_by_category)
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> It breaks each the dataframe up into multiple mini dataframes, divided up by class in a particular column. This way, we can further analyze a specific group. In the example, you split by product category. This allows for analysis of each product category individually.
+
+The .agg() function applies the specified functions to each group and combines the results. Without the .agg() function, there would be no summary statistics.
+
+```{python}
+service_by_category = (
+    shipments_with_category
+    .groupby(['shipID', 'prodCategory'])  # Split by product category & shipID
+    .agg({
+        'is_late': ['any', 'count', 'sum', 'mean'],  # Count, late count, percentage late
+        'days_late': ['mean', 'max']  # Average and max days late
+    })
+    .round(3)
+)
+
+print("Service Level by Product Category:")
+print(service_by_category)
+```
+Question 2:
+By grouping by both ShipID and prodCategory, we are able to analyze how many shipments are late rather than products. This allows us to study patterns in shipments rather than products as multiple product categories could be on a single shipment. By looking at the particular ShipIDs, we may be able to track down which particular shipments run late rather than which product types run late so that we could potentially work with the distributor.
 
 ## Answering A Business Question
 
@@ -557,7 +576,7 @@ print(f"Percentage with multiple categories: {multi_category_shipments['shipID']
 
 #### Briefly Give Answers to the Discussion Questions In This Section
 
-> Replace this with your answers to the discussion questions
+> 
 
 ## Student Analysis Section: Mastering Data Manipulation {#student-analysis-section}
 
