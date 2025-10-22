@@ -297,7 +297,7 @@ late_shipments = shipments_with_lateness.query(f'days_late >= {late_threshold}')
 print(late_shipments.head())
 ```
 
-
+insert
 ### 3. Drop: Removing Unwanted Data
 
 **Mental Model:** Remove columns or rows you don't need.
